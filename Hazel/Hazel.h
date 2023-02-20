@@ -5,6 +5,10 @@
 */
 #pragma once
 
+#include <cstdio>
+
 #include "src/Application.h"
 
+//---Entry Point----
+#include "src/EntryPoint.h"
 

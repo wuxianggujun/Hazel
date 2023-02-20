@@ -16,5 +16,10 @@ namespace Hazel {
         void Run();
     };
 
+
+    //To be defined Client
+    Application* CreateApplication();
+
+
 }
 

@@ -6,7 +6,7 @@ message("Hazel 子模块：${PROJECT_SOURCE_DIR}")
 #设置资源文件
 aux_source_directory(src SRC_LIST)
 
-add_library(${PROJECT_NAME} SHARED ${SRC_LIST} src/Core.h Hazel.h)
+add_library(${PROJECT_NAME} SHARED ${SRC_LIST} src/Core.h Hazel.h src/EntryPoint.h)
 add_library(Hazel::core ALIAS ${PROJECT_NAME})
 
 #target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
