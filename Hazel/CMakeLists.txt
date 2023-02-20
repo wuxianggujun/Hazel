@@ -9,7 +9,7 @@ aux_source_directory(src SRC_LIST)
 add_library(${PROJECT_NAME} SHARED ${SRC_LIST})
 add_library(Hazel::core ALIAS ${PROJECT_NAME})
 
-target_link_libraries(${PROJECT_NAME} ${libRAR})
+#target_link_libraries(${PROJECT_NAME} ${libRAR})
 
 
 #将动态库名字设为add
