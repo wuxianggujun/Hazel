@@ -3,5 +3,5 @@ project(Sendbox)
 
 add_executable(${PROJECT_NAME} src/Application.cpp)
 
-target_link_libraries(${PROJECT_NAME} sub::lib2)
+target_link_libraries(${PROJECT_NAME} Hazel::core)
 

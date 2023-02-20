@@ -1,0 +1,5 @@
+.idea
+*.iml
+out
+cmake-build-debug
+bin
