@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.13)
+project(Hazel)
+message("Hazel 子模块：${PROJECT_SOURCE_DIR}")
+# 添加头文件目录
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+aux_source_directory(src SRC_LIST)
+
+add_library(${PROJECT_NAME} SHARED ${SRC_LIST})
+add_library(sub::lib2 ALIAS ${PROJECT_NAME})
+
+target_link_libraries(${PROJECT_NAME} ${libRAR})
+
+
+#将动态库名字设为add
+#set_target_properties(hazel_lib_shared PROPERTIES OUTPUT_NAME "Hazel")
+#set_target_properties(hazel_lib_shared PROPERTIES VERSION 1.0 SOVERSION 1)
