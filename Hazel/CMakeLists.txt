@@ -1,16 +1,21 @@
 cmake_minimum_required(VERSION 3.13)
 project(Hazel)
 message("Hazel 子模块：${PROJECT_SOURCE_DIR}")
-# 添加头文件目录
-#include_directories(${PROJECT_SOURCE_DIR}/include)
 #设置资源文件
-aux_source_directory(src SRC_LIST)
+#添加spdlog
+find_package(spdlog REQUIRED)
+#引入spdlog的头文件
+include_directories(${SPDLOG_INCLUDE_DIR})
 
-add_library(${PROJECT_NAME} SHARED ${SRC_LIST} src/Core.h Hazel.h src/EntryPoint.h)
+#GLOB_RECURSE遍历子目录中的文件
+file(GLOB_RECURSE SOURCE_FILES "src/*.cpp" "src/*.h")
+
+#将当前模块编译成动态库
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+#取一个别名
 add_library(Hazel::core ALIAS ${PROJECT_NAME})
+#定义
+target_compile_definitions(${PROJECT_NAME} PUBLIC SPDLOG_FMT_EXTERNAL)
+#target_compile_definitions(spdlog_header_only INTERFACE SPDLOG_FMT_EXTERNAL)
+target_link_libraries(${PROJECT_NAME} PUBLIC spdlog::spdlog)
 
-#target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
-
-#将动态库名字设为add
-#set_target_properties(hazel_lib_shared PROPERTIES OUTPUT_NAME "Hazel")
-#set_target_properties(hazel_lib_shared PROPERTIES VERSION 1.0 SOVERSION 1)
